@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import CardComponent from './CardComponent'
-import PokeinfoComponent from './PokeinfoComponent'
-import axios from 'axios'
+import React, { Suspense, useEffect, useState } from 'react';
+import axios from 'axios';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from './ErrorBoundary';
+const CardComponent = React.lazy(()=>import("./CardComponent"));
+const PokeinfoComponent = React.lazy(()=>import("./PokeinfoComponent"));
 const MainComponent = () => {
     const [pokeData,setPokeData]=useState([]);
     const [loading,setLoading]=useState(true);
@@ -38,7 +40,9 @@ const MainComponent = () => {
   return (
     <>
         <div className='container'>
-              <div className='left'>
+            <ErrorBoundary FallbackComponent={ErrorFallback} onReset={()=>{}}>
+            <Suspense fallback={<div>Loading...</div>}>
+             <div className='left'>
                 <CardComponent pokemon={pokeData} loading={loading} infoPokemon={poke=>setPokeDex(poke)}/>
                 
                 <div className='btn-group'>
@@ -57,6 +61,8 @@ const MainComponent = () => {
               <div className='right'>
                 <PokeinfoComponent data={pokeDex}/>
               </div>
+             </Suspense>
+            </ErrorBoundary>
         </div>
     </>
   )

@@ -5,7 +5,8 @@ const PokeinfoComponent = ({data}) => {
    <>
      {
             (!data) ? "" : (
-                <>
+                <> 
+                    <h1 style={{backgroundColor:"Highlight",marginLeft:"40px"}}>PokeMon Info</h1>
                     <h1>{data.name}</h1>
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`} alt="" />
                     <div className="feat">
