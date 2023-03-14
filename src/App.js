@@ -1,24 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
 
+import MainComponent from './components/MainComponent';
+import './components/style.css';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <div style={{backgroundColor:"black", margin:"10px",padding:"10px"}}>
+   <h1 style={{marginLeft:"475px",color:"white",padding:"10px"}}>POKEMON APP</h1>
+   </div>
+    <MainComponent/>
+   </>
   );
 }
 
